@@ -2,15 +2,15 @@
 
 import { useEffect, useState } from "react"
 
-import Loader from "@/components/custom ui/Loader"
+import Loader from "@/components/custom_ui/Loader"
 import CollectionForm from "@/components/collections/CollectionForm"
 
-const CollectionDetails = ({ params }: { params: { collectionId: string }}) => {
+const CollectionDetails = ({ params }: { params: { collectionId: string } }) => {
   const [loading, setLoading] = useState(true)
   const [collectionDetails, setCollectionDetails] = useState<CollectionType | null>(null)
 
   const getCollectionDetails = async () => {
-    try { 
+    try {
       const res = await fetch(`/api/collections/${params.collectionId}`, {
         method: "GET"
       })
@@ -27,7 +27,7 @@ const CollectionDetails = ({ params }: { params: { collectionId: string }}) => {
   }, [])
 
   return loading ? <Loader /> : (
-    <CollectionForm initialData={collectionDetails}/>
+    <CollectionForm initialData={collectionDetails} />
   )
 }
 
