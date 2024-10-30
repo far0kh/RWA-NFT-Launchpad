@@ -7,12 +7,12 @@ import Gift from "@/lib/models/Gift";
 
 export const GET = async (
   req: NextRequest,
-  { params }: { params: { collectionId: string } }
+  { params }: { params: Promise<{ collectionId: string }> }
 ) => {
   try {
     await connectToDB();
-
-    const collection = await Collection.findById(params.collectionId).populate({ path: "gifts", model: Gift });
+    const { collectionId } = await params
+    const collection = await Collection.findById(collectionId).populate({ path: "gifts", model: Gift });
 
     if (!collection) {
       return new NextResponse(
