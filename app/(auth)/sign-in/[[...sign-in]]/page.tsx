@@ -23,10 +23,21 @@ export default function SignInPage() {
           <Clerk.Loading>
             {isGlobalLoading => (
               <>
+                <div className='flex flex-row justify-between pb-3 pe-2'>
+                  <div className='flex justify-start items-center'>
+                    <Link href="https://www.tezuka.xyz">
+                      <img src="/logos/logo-wide.webp" className="h-10" alt="Tezuka Logo" />
+                    </Link>
+                  </div>
+                  <div className='flex justify-end items-center text-lg'>
+                    <span className='pe-1'>Artist</span>
+                    <span className='text-green-500 ps-1'>Login</span>
+                  </div>
+                </div>
                 <SignIn.Step name='start'>
                   <Card className='w-full sm:w-96'>
                     <CardHeader>
-                      <CardTitle>Welcome back!</CardTitle>
+                      <CardTitle>Welcome to the Artist Dashboard</CardTitle>
                       <CardDescription>
                         Please sign in to continue.
                       </CardDescription>
@@ -72,7 +83,7 @@ export default function SignInPage() {
                       <div className='grid w-full gap-y-4'>
                         <div className='grid grid-cols-2 gap-x-4'>
                           <Button asChild>
-                            <Link href='/'>
+                            <Link href="https://www.tezuka.xyz">
                               Back
                             </Link>
                           </Button>
@@ -93,7 +104,8 @@ export default function SignInPage() {
 
                         <Button variant='link' size='sm' asChild>
                           <Link href='/sign-up'>
-                            Not joined yet? Sign up
+                            New to Tezuka?
+                            Create an Artist Account
                           </Link>
                         </Button>
                       </div>

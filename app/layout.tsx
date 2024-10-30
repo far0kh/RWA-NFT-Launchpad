@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ClerkProvider } from '@clerk/nextjs'
 import { dark, neobrutalism, shadesOfPurple } from '@clerk/themes'
+import { Toaster } from "@/components/ui/toaster"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
     siteName: "Tezuka",
     images: [
       {
-        url: `/og.jpg`,
+        url: "/logos/og.jpg",
         width: 1200,
         height: 630,
         alt: "Tezuka",
@@ -66,14 +67,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Tezuka",
     description: "NFTs for Real-World Arts",
-    images: [`/og.png`],
+    images: ["/logos/og.png"],
     creator: "@tezuka_xyz",
   },
   icons: {
-    icon: "/favicon.ico",
-    // shortcut: "/favicon-16x16.png",
-    shortcut: "/logo.webp",
-    apple: "/apple-touch-icon.png",
+    icon: "/logos/favicon.ico",
+    // shortcut: "/logos/favicon-16x16.png",
+    shortcut: "/logos/logo.webp",
+    apple: "/logos/apple-touch-icon.png",
   },
   manifest: `/site.webmanifest`,
 };
@@ -96,6 +97,7 @@ export default function RootLayout({
       >
         <body className={`flex flex-col min-h-screen min-w-fit md:min-w-full ${geistSans.variable} ${geistMono.variable} ${jetbrains.variable} antialiased`}>
           {children}
+          <Toaster />
         </body>
       </html>
     </ClerkProvider>
