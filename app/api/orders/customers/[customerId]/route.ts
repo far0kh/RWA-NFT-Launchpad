@@ -5,13 +5,13 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (
   req: NextRequest,
-  { params }: { params: { customerId: string } }
+  { params }: { params: Promise<{ customerId: string }> }
 ) => {
   try {
     await connectToDB();
-
+    const customerId = await params
     const orders = await Order.find({
-      customerClerkId: params.customerId,
+      customerClerkId: customerId,
     }).populate({ path: "gifts.gift", model: Gift });
 
     return NextResponse.json(orders, { status: 200 });
