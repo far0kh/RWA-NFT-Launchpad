@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Shapes } from "@/components/custom_ui/Shapes";
 import Header from "./Header";
+import Footer from "@/components/Footer";
 
 export default function RootLayout({
   children,
@@ -18,6 +19,7 @@ export default function RootLayout({
           <Shapes />
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

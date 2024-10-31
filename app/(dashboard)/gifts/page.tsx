@@ -36,7 +36,7 @@ const Gifts = () => {
   return loading ? (
     <Loader />
   ) : (
-    <div className="px-10 py-5">
+    <div className="px-8 py-10">
       <div className="flex items-center justify-between">
         <p className="text-heading2-bold">Gifts</p>
         <Button
