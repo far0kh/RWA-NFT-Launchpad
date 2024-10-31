@@ -30,7 +30,7 @@ export const GET = async (
 
 export const POST = async (
   req: NextRequest,
-  { params }: { params: { collectionId: string } }
+  { params }: { params: Promise<{ collectionId: string }> }
 ) => {
   try {
     const { userId } = await auth();
@@ -40,8 +40,8 @@ export const POST = async (
     }
 
     await connectToDB();
-
-    let collection = await Collection.findById(params.collectionId);
+    const { collectionId } = await params
+    let collection = await Collection.findById(collectionId);
 
     if (!collection) {
       return new NextResponse("Collection not found", { status: 404 });
@@ -54,7 +54,7 @@ export const POST = async (
     }
 
     collection = await Collection.findByIdAndUpdate(
-      params.collectionId,
+      collectionId,
       { title, description, image },
       { new: true }
     );
@@ -70,7 +70,7 @@ export const POST = async (
 
 export const DELETE = async (
   req: NextRequest,
-  { params }: { params: { collectionId: string } }
+  { params }: { params: Promise<{ collectionId: string }> }
 ) => {
   try {
     const { userId } = await auth();
@@ -80,12 +80,12 @@ export const DELETE = async (
     }
 
     await connectToDB();
-
-    await Collection.findByIdAndDelete(params.collectionId);
+    const { collectionId } = await params
+    await Collection.findByIdAndDelete(collectionId);
 
     await Gift.updateMany(
-      { collections: params.collectionId },
-      { $pull: { collections: params.collectionId } }
+      { collections: collectionId },
+      { $pull: { collections: collectionId } }
     );
 
     return new NextResponse("Collection is deleted", { status: 200 });
