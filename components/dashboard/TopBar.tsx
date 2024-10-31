@@ -22,7 +22,7 @@ const TopBar = () => {
           <Link
             href={link.url}
             key={link.label}
-            className={`flex gap-4 text-body-medium ${pathname === link.url ? "text-blue-1" : "text-grey-1"}`}
+            className={`flex gap-4 text-body-medium ${pathname === link.url ? "text-green-1" : "text-gray-1"}`}
           >
             <p>{link.label}</p>
           </Link>
@@ -35,12 +35,13 @@ const TopBar = () => {
           onClick={() => setDropdownMenu(!dropdownMenu)}
         />
         {dropdownMenu && (
-          <div className="absolute top-10 right-6 flex flex-col gap-8 p-5 bg-white shadow-xl rounded-lg">
+          <div className="absolute top-10 right-6 flex flex-col gap-8 p-5 bg-gray-900 w-52 shadow-xl rounded-lg">
             {navLinks.map((link) => (
               <Link
                 href={link.url}
                 key={link.label}
-                className="flex gap-4 text-body-medium"
+                // className="flex gap-4 text-body-medium hover:text-green-1"
+                className={`flex gap-4 text-body-medium ${pathname === link.url ? "text-green-1" : "text-gray-1"}`}
               >
                 {link.icon} <p>{link.label}</p>
               </Link>

@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { Shapes } from "@/components/custom_ui/Shapes";
+import Header from "./Header";
 
 export default function RootLayout({
   children,
@@ -6,18 +8,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="h-screen flex flex-col md:flex-row gap-4 justify-center items-center">
-      <div className="hidden md:flex w-1/2 justify-center items-center">
-        <Image
-          src="/images/side-bg.png"
-          alt="Tezuka"
-          width={200}
-          height={200}
-          className="h-screen w-full object-cover"
-        />
-      </div>
-      <div className="w-full md:w-1/2 flex justify-center items-center">
-        {children}
+    <div className="mx-auto w-full max-w-7xl h-full">
+      <Header />
+      <div className="grid grid-cols-1 items-center md:grid-cols-2 mt-12 md:mt-8 lg:mt-0">
+        <div className="col-start-1">
+          {children}
+        </div>
+        <div className="hidden md:block md:col-start-2">
+          <Shapes />
+        </div>
       </div>
     </div>
   );

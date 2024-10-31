@@ -64,7 +64,7 @@ export default function SignUpPage() {
                           </Link>
                         </Button>
                         <Button variant='link' size='sm' asChild>
-                          <Link href='/sign-in'>
+                          <Link href='/log-in'>
                             Have you already joined? Sign in
                           </Link>
                         </Button>

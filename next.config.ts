@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
         hostname: "www.tezuka.xyz",
       },
     ],
-  }
+  },
 };
 
 export default nextConfig;

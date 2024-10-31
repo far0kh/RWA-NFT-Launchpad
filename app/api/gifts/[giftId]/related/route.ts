@@ -2,11 +2,11 @@ import Gift from "@/lib/models/Gift";
 import { connectToDB } from "@/lib/mongoDB";
 import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async (req: NextRequest, { params }: { params: { giftId: string } }) => {
+export const GET = async (req: NextRequest, { params }: { params: Promise<{ giftId: string }> }) => {
   try {
     await connectToDB()
-
-    const gift = await Gift.findById(params.giftId)
+    const { giftId } = await params
+    const gift = await Gift.findById(giftId)
 
     if (!gift) {
       return new NextResponse(JSON.stringify({ message: "Gift not found" }), { status: 404 })

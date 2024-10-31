@@ -1,4 +1,5 @@
 'use client'
+
 import * as Clerk from '@clerk/elements/common'
 import * as SignIn from '@clerk/elements/sign-in'
 import Link from 'next/link'
@@ -17,36 +18,25 @@ import { Icons } from '@/components/Icons'
 
 export default function SignInPage() {
   return (
-    <div className='grid w-full h--vh grow items-center px-4 sm:justify-center my-auto'>
+    <div className='grid w-full h--vh grow items-center px-0 sm:px-4 sm:justify-center my-auto'>
       {typeof window !== 'undefined' &&
         <SignIn.Root>
           <Clerk.Loading>
             {isGlobalLoading => (
               <>
-                <div className='flex flex-row justify-between pb-3 pe-2'>
-                  <div className='flex justify-start items-center'>
-                    <Link href="https://www.tezuka.xyz">
-                      <img src="/logos/logo-wide.webp" className="h-10" alt="Tezuka Logo" />
-                    </Link>
-                  </div>
-                  <div className='flex justify-end items-center text-lg'>
-                    <span className='pe-1'>Artist</span>
-                    <span className='text-green-500 ps-1'>Login</span>
-                  </div>
-                </div>
                 <SignIn.Step name='start'>
-                  <Card className='w-full sm:w-96'>
+                  <Card className='w-full sm:w-96 border-0'>
                     <CardHeader>
-                      <CardTitle>Welcome to the Artist Dashboard</CardTitle>
-                      <CardDescription>
-                        Please sign in to continue.
+                      <CardTitle className='text-heading2-bold'>Welcome to the <br /> Artist Dashboard</CardTitle>
+                      <CardDescription className='text-body-bold text-gray-2 pt-4'>
+                        Please log in to continue.
                       </CardDescription>
                     </CardHeader>
                     <CardContent className='grid gap-y-4'>
                       <div className='grid grid-cols-1 gap-x-4'>
                         <Clerk.Connection name='google' asChild>
                           <Button
-                            size='default'
+                            size='lg'
                             variant='outline'
                             type='button'
                             disabled={isGlobalLoading}
@@ -81,12 +71,7 @@ export default function SignInPage() {
                     </CardContent>
                     <CardFooter>
                       <div className='grid w-full gap-y-4'>
-                        <div className='grid grid-cols-2 gap-x-4'>
-                          <Button asChild>
-                            <Link href="https://www.tezuka.xyz">
-                              Back
-                            </Link>
-                          </Button>
+                        <div className='grid grid-cols-1'>
                           <SignIn.Action submit asChild>
                             <Button disabled={isGlobalLoading}>
                               <Clerk.Loading>
@@ -102,12 +87,17 @@ export default function SignInPage() {
                           </SignIn.Action>
                         </div>
 
-                        <Button variant='link' size='sm' asChild>
-                          <Link href='/sign-up'>
+                        <div className='flex justify-center'>
+                          <p className='pt-1'>
                             New to Tezuka?
-                            Create an Artist Account
-                          </Link>
-                        </Button>
+                          </p>
+                          <Button variant='link' size='sm' asChild>
+                            <Link href='/sign-up' className='text-green-1 px-1.5'>
+                              Create an Artist Account
+                            </Link>
+                          </Button>
+                        </div>
+
                       </div>
                     </CardFooter>
                   </Card>
@@ -296,6 +286,6 @@ export default function SignInPage() {
           </Clerk.Loading>
         </SignIn.Root>
       }
-    </div>
+    </div >
   )
 }

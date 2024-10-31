@@ -73,7 +73,7 @@ const Delete: React.FC<DeleteProps> = ({ item, id }) => {
         <Trash className="h-4 w-4 text-red-1" />
         {/* </Button> */}
       </AlertDialogTrigger>
-      <AlertDialogContent className="bg-white text-grey-1">
+      <AlertDialogContent className="bg-white text-gray-1">
         <AlertDialogHeader>
           <AlertDialogTitle className="text-red-1">Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>

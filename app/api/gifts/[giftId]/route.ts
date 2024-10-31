@@ -7,12 +7,12 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (
   req: NextRequest,
-  { params }: { params: { giftId: string } }
+  { params }: { params: Promise<{ giftId: string }> }
 ) => {
   try {
     await connectToDB();
-
-    const gift = await Gift.findById(params.giftId).populate({
+    const { giftId } = await params
+    const gift = await Gift.findById(giftId).populate({
       path: "collections",
       model: Collection,
     });
@@ -39,7 +39,7 @@ export const GET = async (
 
 export const POST = async (
   req: NextRequest,
-  { params }: { params: { giftId: string } }
+  { params }: { params: Promise<{ giftId: string }> }
 ) => {
   try {
     const { userId } = await auth();
@@ -49,8 +49,8 @@ export const POST = async (
     }
 
     await connectToDB();
-
-    const gift = await Gift.findById(params.giftId);
+    const { giftId } = await params
+    const gift = await Gift.findById(giftId);
 
     if (!gift) {
       return new NextResponse(
@@ -134,7 +134,7 @@ export const POST = async (
 
 export const DELETE = async (
   req: NextRequest,
-  { params }: { params: { giftId: string } }
+  { params }: { params: Promise<{ giftId: string }> }
 ) => {
   try {
     const { userId } = await auth();
@@ -144,8 +144,8 @@ export const DELETE = async (
     }
 
     await connectToDB();
-
-    const gift = await Gift.findById(params.giftId);
+    const { giftId } = await params
+    const gift = await Gift.findById(giftId);
 
     if (!gift) {
       return new NextResponse(
