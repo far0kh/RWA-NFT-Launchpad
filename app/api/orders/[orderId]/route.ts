@@ -4,11 +4,11 @@ import Gift from "@/lib/models/Gift";
 import { connectToDB } from "@/lib/mongoDB";
 import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async (req: NextRequest, { params }: { params: { orderId: String } }) => {
+export const GET = async (req: NextRequest, { params }: { params: Promise<{ orderId: String }> }) => {
   try {
     await connectToDB()
-
-    const orderDetails = await Order.findById(params.orderId).populate({
+    const { orderId } = await params
+    const orderDetails = await Order.findById(orderId).populate({
       path: "gifts.gift",
       model: Gift
     })
