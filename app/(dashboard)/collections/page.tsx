@@ -36,8 +36,8 @@ const Collections = () => {
   return loading ? <Loader /> : (
     <div className="px-8 py-10">
       <div className="flex items-center justify-between">
-        <p className="text-heading2-bold">Collections</p>
-        <Button className="bg-blue-1 text-white" onClick={() => router.push("/collections/new")}>
+        <p className="text-3xl font-bold">Collections</p>
+        <Button className="bg-blue-700 text-white" onClick={() => router.push("/collections/new")}>
           <Plus className="h-4 w-4 mr-2" />
           Create Collection
         </Button>

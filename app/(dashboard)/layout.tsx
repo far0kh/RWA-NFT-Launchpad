@@ -1,7 +1,5 @@
-import LeftSideBar from "@/components/dashboard/LeftSideBar";
-import TopBar from "@/components/dashboard/TopBar";
-import Footer from "@/components/Footer";
-// import { ToasterProvider } from "@/lib/ToasterProvider";
+import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/components/ui/sidebar"
+import { SidebarLayout } from "@/components/sidebar/sidebar-layout"
 
 export default function RootLayout({
   children,
@@ -9,13 +7,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex max-lg:flex-col">
-      <LeftSideBar />
-      <TopBar />
+    <SidebarProvider>
+      <SidebarLayout />
       <div className="flex-1">
-        {children}
-        <Footer />
+        <SidebarInset>
+          <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+            <div className="flex items-center gap-2 px-4">
+              <SidebarTrigger />
+            </div>
+          </header>
+          <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+            {children}
+          </div>
+        </SidebarInset>
       </div>
-    </div>
+    </SidebarProvider>
   );
 }

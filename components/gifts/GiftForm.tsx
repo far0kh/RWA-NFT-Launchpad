@@ -159,11 +159,11 @@ const GiftForm: React.FC<GiftFormProps> = ({ initialData }) => {
     <div className="p-10">
       {initialData ? (
         <div className="flex items-center justify-between">
-          <p className="text-heading2-bold">Edit Gift</p>
+          <p className="text-3xl font-bold">Edit Gift</p>
           <Delete id={initialData._id} item="gift" />
         </div>
       ) : (
-        <p className="text-heading2-bold">Create Gift</p>
+        <p className="text-3xl font-bold">Create Gift</p>
       )}
       <Separator className="bg-grey-1 mt-4 mb-7" />
       <Form {...form}>
@@ -181,7 +181,7 @@ const GiftForm: React.FC<GiftFormProps> = ({ initialData }) => {
                     onKeyDown={handleKeyPress}
                   />
                 </FormControl>
-                <FormMessage className="text-red-1" />
+                <FormMessage className="text-red-600" />
               </FormItem>
             )}
           />
@@ -199,7 +199,7 @@ const GiftForm: React.FC<GiftFormProps> = ({ initialData }) => {
                     onKeyDown={handleKeyPress}
                   />
                 </FormControl>
-                <FormMessage className="text-red-1" />
+                <FormMessage className="text-red-600" />
               </FormItem>
             )}
           />
@@ -220,7 +220,7 @@ const GiftForm: React.FC<GiftFormProps> = ({ initialData }) => {
                     }
                   />
                 </FormControl>
-                <FormMessage className="text-red-1" />
+                <FormMessage className="text-red-600" />
               </FormItem>
             )}
           />
@@ -240,7 +240,7 @@ const GiftForm: React.FC<GiftFormProps> = ({ initialData }) => {
                       onKeyDown={handleKeyPress}
                     />
                   </FormControl>
-                  <FormMessage className="text-red-1" />
+                  <FormMessage className="text-red-600" />
                 </FormItem>
               )}
             />
@@ -258,7 +258,7 @@ const GiftForm: React.FC<GiftFormProps> = ({ initialData }) => {
                       onKeyDown={handleKeyPress}
                     />
                   </FormControl>
-                  <FormMessage className="text-red-1" />
+                  <FormMessage className="text-red-600" />
                 </FormItem>
               )}
             />
@@ -275,7 +275,7 @@ const GiftForm: React.FC<GiftFormProps> = ({ initialData }) => {
                       onKeyDown={handleKeyPress}
                     />
                   </FormControl>
-                  <FormMessage className="text-red-1" />
+                  <FormMessage className="text-red-600" />
                 </FormItem>
               )}
             />
@@ -297,7 +297,7 @@ const GiftForm: React.FC<GiftFormProps> = ({ initialData }) => {
                       }
                     />
                   </FormControl>
-                  <FormMessage className="text-red-1" />
+                  <FormMessage className="text-red-600" />
                 </FormItem>
               )}
             />
@@ -325,7 +325,7 @@ const GiftForm: React.FC<GiftFormProps> = ({ initialData }) => {
                         }
                       />
                     </FormControl>
-                    <FormMessage className="text-red-1" />
+                    <FormMessage className="text-red-600" />
                   </FormItem>
                 )}
               />
@@ -352,7 +352,7 @@ const GiftForm: React.FC<GiftFormProps> = ({ initialData }) => {
                       }
                     />
                   </FormControl>
-                  <FormMessage className="text-red-1" />
+                  <FormMessage className="text-red-600" />
                 </FormItem>
               )}
             />
@@ -378,20 +378,20 @@ const GiftForm: React.FC<GiftFormProps> = ({ initialData }) => {
                       }
                     />
                   </FormControl>
-                  <FormMessage className="text-red-1" />
+                  <FormMessage className="text-red-600" />
                 </FormItem>
               )}
             />
           </div>
 
           <div className="flex gap-10">
-            <Button type="submit" className="bg-blue-1 text-white">
+            <Button type="submit" className="bg-blue-700 text-white">
               Submit
             </Button>
             <Button
               type="button"
               onClick={() => router.push("/gifts")}
-              className="bg-blue-1 text-white"
+              className="bg-blue-700 text-white"
             >
               Discard
             </Button>

@@ -69,20 +69,20 @@ const Delete: React.FC<DeleteProps> = ({ item, id }) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger>
-        {/* <Button className="bg-red-1 text-white"> */}
-        <Trash className="h-4 w-4 text-red-1" />
+        {/* <Button className="bg-red-600 text-white"> */}
+        <Trash className="h-4 w-4 text-red-600" />
         {/* </Button> */}
       </AlertDialogTrigger>
-      <AlertDialogContent className="bg-white text-gray-1">
+      <AlertDialogContent className="bg-white text-gray-500">
         <AlertDialogHeader>
-          <AlertDialogTitle className="text-red-1">Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogTitle className="text-red-600">Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
             This action cannot be undone. This will permanently delete your {item}.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction className="bg-red-1 text-white" onClick={onDelete}>Delete</AlertDialogAction>
+          <AlertDialogAction className="bg-red-600 text-white" onClick={onDelete}>Delete</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

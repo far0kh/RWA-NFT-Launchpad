@@ -104,11 +104,11 @@ const CollectionForm: React.FC<CollectionFormProps> = ({ initialData }) => {
     <div className="p-10">
       {initialData ? (
         <div className="flex items-center justify-between">
-          <p className="text-heading2-bold">Edit Collection</p>
+          <p className="text-3xl font-bold">Edit Collection</p>
           <Delete id={initialData._id} item="collection" />
         </div>
       ) : (
-        <p className="text-heading2-bold">Create Collection</p>
+        <p className="text-3xl font-bold">Create Collection</p>
       )}
       <Separator className="bg-grey-1 mt-4 mb-7" />
       <Form {...form}>
@@ -157,13 +157,13 @@ const CollectionForm: React.FC<CollectionFormProps> = ({ initialData }) => {
             )}
           />
           <div className="flex gap-10">
-            <Button type="submit" className="bg-blue-1 text-white">
+            <Button type="submit" className="bg-blue-700 text-white">
               Submit
             </Button>
             <Button
               type="button"
               onClick={() => router.push("/collections")}
-              className="bg-blue-1 text-white"
+              className="bg-blue-700 text-white"
             >
               Discard
             </Button>

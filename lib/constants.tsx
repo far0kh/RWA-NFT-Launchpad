@@ -9,27 +9,27 @@ import {
 export const navLinks = [
   {
     url: "/",
-    icon: <LayoutDashboard />,
+    icon: LayoutDashboard,
     label: "Overview",
   },
   {
     url: "/collections",
-    icon: <Shapes />,
+    icon: Shapes,
     label: "Collections",
   },
   {
     url: "/gifts",
-    icon: <Tag />,
+    icon: Tag,
     label: "Gifts",
   },
   {
     url: "/orders",
-    icon: <ShoppingBag />,
+    icon: ShoppingBag,
     label: "Orders",
   },
   {
     url: "/customers",
-    icon: <UsersRound />,
+    icon: UsersRound,
     label: "Customers",
   },
 ];

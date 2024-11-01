@@ -27,8 +27,8 @@ export default function SignInPage() {
                 <SignIn.Step name='start'>
                   <Card className='w-full sm:w-96 border-0'>
                     <CardHeader>
-                      <CardTitle className='text-heading2-bold'>Welcome to the <br /> Artist Dashboard</CardTitle>
-                      <CardDescription className='text-body-bold text-gray-2 pt-4'>
+                      <CardTitle className='text-3xl font-bold'>Welcome to the <br /> Artist Dashboard</CardTitle>
+                      <CardDescription className='text-lg font-bold text-gray-300 pt-4'>
                         Please log in to continue.
                       </CardDescription>
                     </CardHeader>
@@ -92,7 +92,7 @@ export default function SignInPage() {
                             New to Tezuka?
                           </p>
                           <Button variant='link' size='sm' asChild>
-                            <Link href='/sign-up' className='text-green-1 px-1.5'>
+                            <Link href='/sign-up' className='text-green-600 px-1.5'>
                               Create an Artist Account
                             </Link>
                           </Button>

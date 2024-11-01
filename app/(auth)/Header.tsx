@@ -10,7 +10,7 @@ const Header = () => {
             <img src="/logos/logo-wide.webp" className="hidden md:block h-12" alt="Tezuka Logo" />
           </a>
           <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <p className="text-green-1 px-4 py-2 text-center text-body-semibold">
+            <p className="text-green-600 px-4 py-2 text-center text-lg font-semibold">
               Artist Login
             </p>
           </div>

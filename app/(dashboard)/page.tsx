@@ -17,7 +17,7 @@ export default async function Home() {
 
   return (
     <div className="px-8 py-10">
-      <p className="text-heading2-bold">Dashboard</p>
+      <p className="text-3xl font-bold">Dashboard</p>
       <Separator className="bg-grey-1 my-5" />
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-10">
@@ -27,7 +27,7 @@ export default async function Home() {
             <CircleDollarSign className="max-sm:hidden" />
           </CardHeader>
           <CardContent>
-            <p className="text-body-bold">$ {totalRevenue}</p>
+            <p className="text-lg font-bold">$ {totalRevenue}</p>
           </CardContent>
         </Card>
 
@@ -37,7 +37,7 @@ export default async function Home() {
             <ShoppingBag className="max-sm:hidden" />
           </CardHeader>
           <CardContent>
-            <p className="text-body-bold">{totalOrders}</p>
+            <p className="text-lg font-bold">{totalOrders}</p>
           </CardContent>
         </Card>
 
@@ -47,7 +47,7 @@ export default async function Home() {
             <UserRound className="max-sm:hidden" />
           </CardHeader>
           <CardContent>
-            <p className="text-body-bold">{totalCustomers}</p>
+            <p className="text-lg font-bold">{totalCustomers}</p>
           </CardContent>
         </Card>
       </div>
