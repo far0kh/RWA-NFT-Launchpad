@@ -34,15 +34,15 @@ const Collections = () => {
   }, []);
 
   return loading ? <Loader /> : (
-    <div className="px-8 py-10">
+    <div className="px-8 pb-10 mt-2">
       <div className="flex items-center justify-between">
-        <p className="text-3xl font-bold">Collections</p>
+        <p className="text-2xl font-bold">Collections</p>
         <Button className="bg-blue-700 text-white" onClick={() => router.push("/collections/new")}>
           <Plus className="h-4 w-4 mr-2" />
           Create Collection
         </Button>
       </div>
-      <Separator className="bg-grey-1 my-4" />
+      <Separator className="bg-grey-1 my-3" />
       <DataTable columns={columns} data={collections} searchKey="title" />
     </div>
   );

@@ -36,9 +36,9 @@ const Gifts = () => {
   return loading ? (
     <Loader />
   ) : (
-    <div className="px-8 py-10">
+    <div className="px-8 pb-10 mt-2">
       <div className="flex items-center justify-between">
-        <p className="text-3xl font-bold">Gifts</p>
+        <p className="text-2xl font-bold">Gifts</p>
         <Button
           className="bg-blue-700 text-white"
           onClick={() => router.push("/gifts/new")}
@@ -47,7 +47,7 @@ const Gifts = () => {
           Create Gift
         </Button>
       </div>
-      <Separator className="bg-grey-1 my-4" />
+      <Separator className="bg-grey-1 my-3" />
       <DataTable columns={columns} data={gifts} searchKey="title" />
     </div>
   );

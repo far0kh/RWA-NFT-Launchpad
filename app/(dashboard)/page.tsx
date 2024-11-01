@@ -16,9 +16,9 @@ export default async function Home() {
   const graphData = await getSalesPerMonth();
 
   return (
-    <div className="px-8 py-10">
-      <p className="text-3xl font-bold">Dashboard</p>
-      <Separator className="bg-grey-1 my-5" />
+    <div className="px-8 pb-10 mt-2">
+      <p className="text-2xl font-bold">Overview</p>
+      <Separator className="bg-grey-1 my-3" />
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-10">
         <Card>

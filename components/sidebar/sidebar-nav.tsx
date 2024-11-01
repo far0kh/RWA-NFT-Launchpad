@@ -20,7 +20,7 @@ export function SidebarNav() {
   return (
     <SidebarGroup>
       {/* <SidebarGroupLabel>Projects</SidebarGroupLabel> */}
-      <SidebarMenu className="gap-6 mt-4">
+      <SidebarMenu className="gap-4 my-4">
         {navLinks.map((link, index) => (
           <SidebarMenuItem key={index}>
             <SidebarMenuButton tooltip={link.label} asChild>
