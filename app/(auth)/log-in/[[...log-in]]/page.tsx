@@ -88,14 +88,10 @@ export default function SignInPage() {
                         </div>
 
                         <div className='flex justify-center'>
-                          <p className='pt-1'>
-                            New to Tezuka?
-                          </p>
-                          <Button variant='link' size='sm' asChild>
-                            <Link href='/sign-up' className='text-green-600 px-1.5'>
-                              Create an Artist Account
-                            </Link>
-                          </Button>
+                          <p>New to Tezuka?</p>
+                          <Link href='/sign-up' className='text-green-600 hover:text-green-500 px-1.5'>
+                            Create an Artist Account
+                          </Link>
                         </div>
 
                       </div>

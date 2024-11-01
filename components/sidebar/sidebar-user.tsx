@@ -41,7 +41,6 @@ export function SidebarUser() {
     // Handle loading state however you like
     return null
   }
-  console.log(user);
 
   return (
     <SidebarMenu>
