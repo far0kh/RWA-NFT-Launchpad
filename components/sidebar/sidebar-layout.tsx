@@ -20,8 +20,8 @@ export function SidebarLayout({ ...props }: React.ComponentProps<typeof Sidebar>
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <SidebarLogo />
-        <SidebarSeparator />
       </SidebarHeader>
+      <SidebarSeparator />
       <SidebarContent>
         <SidebarNav />
         <SidebarSeparator />
