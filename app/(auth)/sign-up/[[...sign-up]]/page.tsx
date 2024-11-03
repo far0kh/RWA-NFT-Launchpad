@@ -18,7 +18,7 @@ import { Label } from '@/components/ui/label'
 import { Icons } from '@/components/Icons'
 
 export default function SignUpPage() {
-  const { signIn, isGlobalLoading, isLoaded } = useSignIn()
+  const { signIn, isLoaded } = useSignIn()
 
   // if (!isGlobalLoading) {
   //   return null
