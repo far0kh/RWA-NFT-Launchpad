@@ -26,8 +26,8 @@ import {
 export function SidebarSettings() {
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Settings</SidebarGroupLabel>
-      <SidebarMenu>
+      <SidebarGroupLabel className="mb-2">Settings</SidebarGroupLabel>
+      <SidebarMenu className="gap-2">
         {/* ---------------- Profile ---------------- */}
         <SidebarMenuItem>
           <SidebarMenuButton tooltip="Profile" asChild>
