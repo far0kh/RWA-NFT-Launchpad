@@ -28,7 +28,7 @@ export default function SignUpPage() {
                     <CardHeader>
                       <CardTitle>Welcome!</CardTitle>
                       <CardDescription>
-                        Sign up for the Tezuka waiting list.
+                        Sign Up for Artist Profile
                       </CardDescription>
                     </CardHeader>
                     <CardContent className='grid gap-y-4'>

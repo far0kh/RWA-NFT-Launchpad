@@ -11,8 +11,8 @@ export const connectToDB = async (): Promise<void> => {
   }
 
   try {
-    await mongoose.connect(process.env.MONGODB_URL || "", {
-      dbName: "btcgiftshop_admin"
+    await mongoose.connect(process.env.DATABASE_URL || "", {
+      dbName: process.env.DATABASE_NAME || ""
     })
 
     isConnected = true;
