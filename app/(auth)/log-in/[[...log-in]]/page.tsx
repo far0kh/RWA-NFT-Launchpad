@@ -1,5 +1,6 @@
 'use client'
 
+import { useSignIn } from '@clerk/nextjs'
 import * as Clerk from '@clerk/elements/common'
 import * as SignIn from '@clerk/elements/sign-in'
 import Link from 'next/link'
@@ -17,6 +18,15 @@ import { Label } from '@/components/ui/label'
 import { Icons } from '@/components/Icons'
 
 export default function SignInPage() {
+  const { signIn, isLoaded } = useSignIn()
+
+  const signInWithGoogle = () =>
+    signIn.authenticateWithRedirect({
+      strategy: 'oauth_google',
+      redirectUrl: '/sso-callback',
+      redirectUrlComplete: '/',
+    })
+
   return (
     <div className='grid w-full h--vh grow items-center px-0 sm:px-4 sm:justify-center my-auto'>
       {typeof window !== 'undefined' &&
@@ -39,6 +49,7 @@ export default function SignInPage() {
                             size='lg'
                             variant='outline'
                             type='button'
+                            onClick={signInWithGoogle}
                             disabled={isGlobalLoading}
                           >
                             <Clerk.Loading scope='provider:google'>
