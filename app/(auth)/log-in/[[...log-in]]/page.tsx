@@ -89,7 +89,7 @@ export default function SignInPage() {
 
                         <div className='flex justify-center'>
                           <p>New to Tezuka?</p>
-                          <Link href='/sign-up' className='text-green-600 hover:text-green-500 px-1.5'>
+                          <Link href='/sign-up?redirect_url=/profile' className='text-green-600 hover:text-green-500 px-1.5'>
                             Create an Artist Account
                           </Link>
                         </div>

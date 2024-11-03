@@ -6,7 +6,7 @@ import {
   ChevronsUpDown,
   CreditCard,
   LogOut,
-  Sparkles,
+  UserRoundIcon,
 } from "lucide-react"
 
 import {
@@ -88,16 +88,16 @@ export function SidebarUser() {
             <DropdownMenuGroup>
               <a href="/profile">
                 <DropdownMenuItem>
-                  <Sparkles />
-                  <span>Profile</span>
+                  <UserRoundIcon />
+                  <span>My Profile</span>
                 </DropdownMenuItem>
               </a>
             </DropdownMenuGroup>
             <SignOutButton redirectUrl="/log-in">
               <DropdownMenuItem>
                 <button className="flex text-gray-300">
-                  <LogOut />
-                  <span className="text-base ml-2">Log out</span>
+                  <LogOut className="h-5 w-5" />
+                  <span className="text-sm ml-2">Log out</span>
                 </button>
               </DropdownMenuItem>
             </SignOutButton>
