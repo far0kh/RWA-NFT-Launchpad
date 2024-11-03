@@ -20,6 +20,10 @@ import { Icons } from '@/components/Icons'
 export default function SignUpPage() {
   const { signIn, isLoaded } = useSignIn()
 
+  if (!isLoaded) {
+    return null
+  }
+
   const signInWithGoogle = () =>
     signIn.authenticateWithRedirect({
       strategy: 'oauth_google',
