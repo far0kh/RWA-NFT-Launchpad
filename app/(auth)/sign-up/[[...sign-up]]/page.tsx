@@ -18,14 +18,14 @@ import { Label } from '@/components/ui/label'
 import { Icons } from '@/components/Icons'
 
 export default function SignUpPage() {
-  const { signIn, isLoaded } = useSignIn()
+  const { signIn, isGlobalLoading, isLoaded } = useSignIn()
 
-  if (!isLoaded) {
-    return null
-  }
+  // if (!isGlobalLoading) {
+  //   return null
+  // }
 
   const signInWithGoogle = () =>
-    signIn.authenticateWithRedirect({
+    signIn?.authenticateWithRedirect({
       strategy: 'oauth_google',
       redirectUrl: '/sso-callback',
       redirectUrlComplete: '/',
