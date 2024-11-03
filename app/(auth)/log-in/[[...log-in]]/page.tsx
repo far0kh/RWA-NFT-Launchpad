@@ -27,7 +27,7 @@ export default function SignInPage() {
                 <SignIn.Step name='start'>
                   <Card className='w-full sm:w-96 border-0'>
                     <CardHeader>
-                      <CardTitle className='text-3xl font-bold'>Welcome to the <br /> Artist Dashboard</CardTitle>
+                      <CardTitle className='text-3xl font-bold'>Welcome to the <br /> Artist Center</CardTitle>
                       <CardDescription className='text-lg font-bold text-gray-300 pt-4'>
                         Please log in to continue.
                       </CardDescription>

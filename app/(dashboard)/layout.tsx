@@ -16,7 +16,7 @@ export default function RootLayout({
             <div className="flex items-center gap-2 px-4">
               <SidebarTrigger />
               <Separator orientation="vertical" className="mr-2 h-4" />
-              <span className="text-green-500">Artist Dashboard</span>
+              <span className="text-green-500">Artist Center</span>
             </div>
           </header>
           <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
