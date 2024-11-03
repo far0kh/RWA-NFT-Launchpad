@@ -24,7 +24,7 @@ const jetbrains = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "NFTs for Real-World Arts",
+    default: "Tezuka Artist Center",
     template: `%s | Tezuka`,
   },
   metadataBase: new URL("https://www.tezuka.xyz/"),
