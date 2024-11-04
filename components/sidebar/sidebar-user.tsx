@@ -93,14 +93,14 @@ export function SidebarUser() {
                 </DropdownMenuItem>
               </a>
             </DropdownMenuGroup>
-            <SignOutButton redirectUrl="/log-in">
-              <DropdownMenuItem>
+            <DropdownMenuItem>
+              <SignOutButton redirectUrl="/">
                 <button className="flex text-gray-300">
                   <LogOut className="h-5 w-5" />
                   <span className="text-sm ml-2">Log out</span>
                 </button>
-              </DropdownMenuItem>
-            </SignOutButton>
+              </SignOutButton>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
