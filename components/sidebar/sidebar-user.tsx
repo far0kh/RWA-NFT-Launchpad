@@ -27,7 +27,20 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 
-import { useUser, SignOutButton } from '@clerk/nextjs'
+import { useClerk, useUser } from '@clerk/nextjs'
+import Link from "next/link"
+export const SignOutButton = () => {
+  const { signOut } = useClerk()
+  return (
+    <button
+      className="flex text-gray-300 w-full"
+      onClick={() => signOut({ redirectUrl: '/log-in' })}
+    >
+      <LogOut className="h-5 w-5" />
+      <span className="text-sm ml-2">Log out</span>
+    </button>
+  )
+}
 
 export function SidebarUser() {
   const { isMobile } = useSidebar()
@@ -83,20 +96,15 @@ export function SidebarUser() {
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <a href="/profile">
-                <DropdownMenuItem>
-                  <UserRoundIcon />
-                  <span>My Profile</span>
-                </DropdownMenuItem>
-              </a>
+              <DropdownMenuItem>
+                <Link href="/profile" className="flex text-gray-300 w-full">
+                  <UserRoundIcon className="h-5 w-5" />
+                  <span className="text-sm ml-2">My Profile</span>
+                </Link>
+              </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuItem>
-              <SignOutButton redirectUrl="/">
-                <button className="flex text-gray-300">
-                  <LogOut className="h-5 w-5" />
-                  <span className="text-sm ml-2">Log out</span>
-                </button>
-              </SignOutButton>
+              <SignOutButton />
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
