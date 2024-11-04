@@ -30,7 +30,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 
-import { useUser, SignOutButton } from '@clerk/clerk-react'
+import { useUser, SignOutButton } from '@clerk/nextjs'
 
 export function SidebarUser() {
   const { isMobile } = useSidebar()
