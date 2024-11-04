@@ -27,8 +27,33 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 
-import { useClerk, useUser, SignOutButton, useAuth } from '@clerk/nextjs'
+import { useClerk, useUser, useAuth } from '@clerk/nextjs'
 import Link from "next/link"
+
+export const SignOutButton1 = () => {
+  const { signOut } = useClerk()
+
+  return (
+    // Clicking this button signs out a user
+    // and redirects them to the home page "/".
+    <button onClick={() => signOut({ redirectUrl: '/' })}>Sign out</button>
+  )
+}
+export const SignOutButton = () => {
+  const clerk = useClerk();
+  console.log(clerk);
+  const { signOut } = clerk;
+  return (
+    <button
+      className="flex text-gray-300 w-full"
+      onClick={async () => await signOut({ redirectUrl: "/log-in" })}
+    // onClick={async () => await signOut({ redirectUrl: '/log-in' })}
+    >
+      <LogOut className="h-5 w-5" />
+      <span className="text-sm ml-2">Log out</span>
+    </button>
+  )
+}
 
 export function SidebarUser() {
   const { isMobile } = useSidebar()
@@ -36,20 +61,6 @@ export function SidebarUser() {
   const { user, isLoaded } = useUser()
 
   const { sessionId } = useAuth()
-  // const customSignOutButton = async () => {
-  //   const { signOut } = await useClerk()
-  //   return (
-  //     <button
-  //       className="flex text-gray-300 w-full"
-  //       onClick={async () => await signOut()}
-  //     // onClick={async () => await signOut({ redirectUrl: '/log-in' })}
-  //     >
-  //       <LogOut className="h-5 w-5" />
-  //       <span className="text-sm ml-2">Log out</span>
-  //     </button>
-  //   )
-  // }
-
 
   if (!sessionId) {
     console.log("not sessionId");
@@ -114,13 +125,13 @@ export function SidebarUser() {
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuItem>
-              {/* <SignOutButton /> */}
-              <SignOutButton signOutOptions={{ sessionId, redirectUrl: "/log-in" }}>
+              <SignOutButton />
+              {/* <SignOutButton redirectUrl="/log-in" signOutOptions={{ sessionId, redirectUrl: "/log-in" }}>
                 <div className="flex text-gray-300 w-full cursor-pointer">
                   <LogOut className="h-5 w-5" />
                   <span className="text-sm ml-2">Log out</span>
                 </div>
-              </SignOutButton>
+              </SignOutButton> */}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
