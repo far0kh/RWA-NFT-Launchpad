@@ -47,7 +47,6 @@ export const SignOutButton = () => {
     <button
       className="flex text-gray-300 w-full"
       onClick={async () => await signOut({ redirectUrl: "/log-in" })}
-    // onClick={async () => await signOut({ redirectUrl: '/log-in' })}
     >
       <LogOut className="h-5 w-5" />
       <span className="text-sm ml-2">Log out</span>
