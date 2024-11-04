@@ -27,37 +27,43 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 
-import { useClerk, useUser, SignOutButton, UserButton } from '@clerk/nextjs'
+import { useClerk, useUser, SignOutButton, useAuth } from '@clerk/nextjs'
 import Link from "next/link"
-// export const customSignOutButton = async () => {
-//   const { signOut } = await useClerk()
-//   return (
-//     <button
-//       className="flex text-gray-300 w-full"
-//       onClick={async () => await signOut()}
-//     // onClick={async () => await signOut({ redirectUrl: '/log-in' })}
-//     >
-//       <LogOut className="h-5 w-5" />
-//       <span className="text-sm ml-2">Log out</span>
-//     </button>
-//   )
-// }
 
 export function SidebarUser() {
   const { isMobile } = useSidebar()
 
   const { user, isLoaded } = useUser()
 
+  const { sessionId } = useAuth()
+  // const customSignOutButton = async () => {
+  //   const { signOut } = await useClerk()
+  //   return (
+  //     <button
+  //       className="flex text-gray-300 w-full"
+  //       onClick={async () => await signOut()}
+  //     // onClick={async () => await signOut({ redirectUrl: '/log-in' })}
+  //     >
+  //       <LogOut className="h-5 w-5" />
+  //       <span className="text-sm ml-2">Log out</span>
+  //     </button>
+  //   )
+  // }
+
+
+  if (!sessionId) {
+    console.log("not sessionId");
+    return null;
+  }
+
   if (!isLoaded) {
+    console.log("not isLoaded");
     // Handle loading state however you like
     return null
   }
 
   return (
     <SidebarMenu>
-      <SidebarMenuItem>
-        <UserButton />
-      </SidebarMenuItem>
       <SidebarMenuItem>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -109,7 +115,7 @@ export function SidebarUser() {
             </DropdownMenuGroup>
             <DropdownMenuItem>
               {/* <SignOutButton /> */}
-              <SignOutButton signOutOptions={{ redirectUrl: "/log-in" }}>
+              <SignOutButton signOutOptions={{ sessionId, redirectUrl: "/log-in" }}>
                 <div className="flex text-gray-300 w-full cursor-pointer">
                   <LogOut className="h-5 w-5" />
                   <span className="text-sm ml-2">Log out</span>
