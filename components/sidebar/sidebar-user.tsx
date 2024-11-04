@@ -27,22 +27,11 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 
-import { useClerk, useUser, useAuth } from '@clerk/nextjs'
+import { useClerk, useUser } from '@clerk/nextjs'
 import Link from "next/link"
 
-export const SignOutButton1 = () => {
-  const { signOut } = useClerk()
-
-  return (
-    // Clicking this button signs out a user
-    // and redirects them to the home page "/".
-    <button onClick={() => signOut({ redirectUrl: '/' })}>Sign out</button>
-  )
-}
 export const SignOutButton = () => {
-  const clerk = useClerk();
-  console.log(clerk);
-  const { signOut } = clerk;
+  const { signOut } = useClerk();
   return (
     <button
       className="flex text-gray-300 w-full"
@@ -59,15 +48,7 @@ export function SidebarUser() {
 
   const { user, isLoaded } = useUser()
 
-  const { sessionId } = useAuth()
-
-  if (!sessionId) {
-    console.log("not sessionId");
-    return null;
-  }
-
   if (!isLoaded) {
-    console.log("not isLoaded");
     // Handle loading state however you like
     return null
   }
@@ -125,12 +106,6 @@ export function SidebarUser() {
             </DropdownMenuGroup>
             <DropdownMenuItem>
               <SignOutButton />
-              {/* <SignOutButton redirectUrl="/log-in" signOutOptions={{ sessionId, redirectUrl: "/log-in" }}>
-                <div className="flex text-gray-300 w-full cursor-pointer">
-                  <LogOut className="h-5 w-5" />
-                  <span className="text-sm ml-2">Log out</span>
-                </div>
-              </SignOutButton> */}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
