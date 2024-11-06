@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
         },
         quantity: giftboxItem.quantity,
       })),
-      client_reference_id: customer.clerkId,
+      client_reference_id: customer.clerk_id,
       success_url: `${process.env.BTCGS_APP_URL}/payment_success`,
       cancel_url: `${process.env.BTCGS_APP_URL}/giftbox`,
     });

@@ -19,7 +19,7 @@ export const POST = async (req: NextRequest) => {
       const session = event.data.object
 
       const customerInfo = {
-        clerkId: session?.client_reference_id,
+        clerk_id: session?.client_reference_id,
         name: session?.customer_details?.name,
         email: session?.customer_details?.email,
       }
@@ -51,7 +51,7 @@ export const POST = async (req: NextRequest) => {
       await connectToDB()
 
       const newOrder = new Order({
-        customerClerkId: customerInfo.clerkId,
+        customerClerkId: customerInfo.clerk_id,
         gifts: orderItems,
         shippingAddress,
         shippingRate: session?.shipping_cost?.shipping_rate,
@@ -60,7 +60,7 @@ export const POST = async (req: NextRequest) => {
 
       await newOrder.save()
 
-      let customer = await Customer.findOne({ clerkId: customerInfo.clerkId })
+      let customer = await Customer.findOne({ clerk_id: customerInfo.clerk_id })
 
       if (customer) {
         customer.orders.push(newOrder._id)

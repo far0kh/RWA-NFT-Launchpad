@@ -12,7 +12,7 @@ export const GET = async (req: NextRequest) => {
     const orders = await Order.find().sort({ createdAt: "desc" })
 
     const orderDetails = await Promise.all(orders.map(async (order) => {
-      const customer = await Customer.findOne({ clerkId: order.customerClerkId })
+      const customer = await Customer.findOne({ clerk_id: order.customerClerkId })
       return {
         _id: order._id,
         customer: customer.name,

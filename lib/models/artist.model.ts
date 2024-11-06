@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const artistSchema = new mongoose.Schema({
-  clerkId: { type: String, required: true, unique: true },
+  clerk_id: { type: String, required: true, unique: true },
   email: { type: String, required: true },
   firstName: String,
   lastName: String,

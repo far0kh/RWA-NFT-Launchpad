@@ -1,5 +1,5 @@
 type UserType = {
-  clerkId: string;
+  clerk_id: string;
   email_address: string;
   username: string;
   image_url: string;
@@ -47,7 +47,7 @@ type OrderItemType = {
 }
 
 type CustomerType = {
-  clerkId: string;
+  clerk_id: string;
   name: string;
   email: string;
 }

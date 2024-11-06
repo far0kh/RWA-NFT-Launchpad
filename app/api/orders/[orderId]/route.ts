@@ -17,7 +17,7 @@ export const GET = async (req: NextRequest, { params }: { params: Promise<{ orde
       return new NextResponse(JSON.stringify({ message: "Order Not Found" }), { status: 404 })
     }
 
-    const customer = await Customer.findOne({ clerkId: orderDetails.customerClerkId })
+    const customer = await Customer.findOne({ clerk_id: orderDetails.customerClerkId })
 
     return NextResponse.json({ orderDetails, customer }, { status: 200 })
   } catch (err) {

@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
 const customerSchema = new mongoose.Schema({
-  clerkId: String,
+  clerk_id: String,
   name: String,
   email: String,
   orders: {
-    type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Order"}]
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Order" }]
   },
   createdAt: {
     type: Date,

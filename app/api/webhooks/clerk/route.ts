@@ -69,7 +69,7 @@ export async function POST(req: Request) {
       evt.data;
 
     const user = {
-      clerkId: id,
+      clerk_id: id,
       email_address: email_addresses[0].email_address,
       username: username!,
       image_url: image_url!,
@@ -85,7 +85,8 @@ export async function POST(req: Request) {
       const client = await clerkClient();
       await client.users.updateUserMetadata(id, {
         publicMetadata: {
-          userId: newUser._id,
+          db_user_id: newUser._id,
+          is_verified_artist: false,
         },
       });
     }
