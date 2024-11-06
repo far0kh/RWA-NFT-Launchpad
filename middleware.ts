@@ -11,7 +11,6 @@ const isPublicRoute = createRouteMatcher(['/log-in(.*)', '/sign-up(.*)', '/test(
 
 export default clerkMiddleware(async (auth, req) => {
   const { userId, redirectToSignIn, sessionClaims } = await auth();
-  console.log("sessionClaims", sessionClaims);
 
   if (!userId && !isPublicRoute(req)) {
     // Add custom logic to run before redirecting
@@ -20,12 +19,15 @@ export default clerkMiddleware(async (auth, req) => {
 
   // ToDo is_verified_artist: true > false
   // let { is_verified_artist } = sessionClaims?.metadata || { is_verified_artist: undefined };
-  let { is_verified_artist } = sessionClaims?.metadata as ClerkMetadata || {} as ClerkMetadata;
-  if (typeof is_verified_artist === 'undefined') {
-    is_verified_artist = true;
-  }
+  let { is_verified_artist } = (sessionClaims?.metadata || {}) as ClerkMetadata;
+  console.log('sessionClaims', sessionClaims);
+  console.log('is_verified_artist', is_verified_artist);
+
+  // if (typeof is_verified_artist === 'undefined') {
+  //   is_verified_artist = true;
+  // }
   if (userId && !isPublicRoute(req) && !is_verified_artist) {
-    return await NextResponse.redirect(new URL("/test", req.url))
+    return NextResponse.redirect(new URL("/test", req.url))
   }
 
 })
