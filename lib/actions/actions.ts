@@ -1,5 +1,6 @@
 import Customer from "../models/Customer";
 import Order from "../models/Order";
+import Collection from "../models/Collection";
 import { connectToDB } from "../mongoDB"
 
 export const getTotalSales = async () => {
@@ -36,4 +37,10 @@ export const getSalesPerMonth = async () => {
   })
 
   return graphData
+}
+
+export const getAllCollections = async () => {
+  await connectToDB();
+  const collections = await Collection.find()
+  return collections
 }
