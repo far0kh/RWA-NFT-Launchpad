@@ -7,6 +7,11 @@ type UserType = {
   last_name: string;
 }
 
+type ClerkMetadata = {
+  db_user_id?: string,
+  is_verified_artist?: string,
+}
+
 type CollectionType = {
   _id: string;
   title: string;
