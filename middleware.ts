@@ -24,9 +24,9 @@ export default clerkMiddleware(async (auth, req) => {
     let { is_verified_artist } = user.publicMetadata as ClerkMetadata;
 
     // development environment
-    if (typeof is_verified_artist === 'undefined') {
-      is_verified_artist = true;
-    }
+    // if (process.env.NODE_ENV === "development") {
+    //   is_verified_artist = true;
+    // }
 
     if (userId && !is_verified_artist && !isWelcomeRoute(req)) {
       return NextResponse.redirect(new URL("/welcome", req.url))
