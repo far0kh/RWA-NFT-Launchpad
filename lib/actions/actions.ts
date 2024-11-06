@@ -1,7 +1,7 @@
-import User from "../models/User";
-import Customer from "../models/Customer";
-import Order from "../models/Order";
-import Collection from "../models/Collection";
+import User from "@/lib/models/user.model";
+import Customer from "@/lib/models/customer.model";
+import Order from "@/lib/models/order.model";
+import Collection from "@/lib/models/collection.model";
 import { connectToDB } from "../mongoDB"
 
 export const getTotalSales = async () => {

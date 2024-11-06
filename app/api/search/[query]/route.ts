@@ -1,4 +1,4 @@
-import Gift from "@/lib/models/Gift";
+import Gift from "@/lib/models/gift.model";
 import { connectToDB } from "@/lib/mongoDB";
 import { NextRequest, NextResponse } from "next/server";
 

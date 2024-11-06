@@ -1,5 +1,5 @@
-import Order from "@/lib/models/Order";
-import Gift from "@/lib/models/Gift";
+import Order from "@/lib/models/order.model";
+import Gift from "@/lib/models/gift.model";
 import { connectToDB } from "@/lib/mongoDB";
 import { NextRequest, NextResponse } from "next/server";
 

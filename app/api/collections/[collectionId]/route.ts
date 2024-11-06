@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from '@clerk/nextjs/server';
 
 import { connectToDB } from "@/lib/mongoDB";
-import Collection from "@/lib/models/Collection";
-import Gift from "@/lib/models/Gift";
+import Collection from "@/lib/models/collection.model";
+import Gift from "@/lib/models/gift.model";
 
 export const GET = async (
   req: NextRequest,

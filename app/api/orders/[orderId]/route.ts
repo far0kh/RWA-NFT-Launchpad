@@ -1,6 +1,6 @@
-import Customer from "@/lib/models/Customer";
-import Order from "@/lib/models/Order";
-import Gift from "@/lib/models/Gift";
+import Customer from "@/lib/models/customer.model";
+import Order from "@/lib/models/order.model";
+import Gift from "@/lib/models/gift.model";
 import { connectToDB } from "@/lib/mongoDB";
 import { NextRequest, NextResponse } from "next/server";
 

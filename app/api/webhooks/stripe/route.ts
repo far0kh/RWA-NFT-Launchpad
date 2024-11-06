@@ -1,5 +1,5 @@
-import Customer from "@/lib/models/Customer";
-import Order from "@/lib/models/Order";
+import Customer from "@/lib/models/customer.model";
+import Order from "@/lib/models/order.model";
 import { connectToDB } from "@/lib/mongoDB";
 import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";

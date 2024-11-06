@@ -1,5 +1,5 @@
-import Collection from "@/lib/models/Collection";
-import Gift from "@/lib/models/Gift";
+import Collection from "@/lib/models/collection.model";
+import Gift from "@/lib/models/gift.model";
 import { connectToDB } from "@/lib/mongoDB";
 import { auth } from '@clerk/nextjs/server';
 
