@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
   first_name: {
     type: String,
   },
-  lastName: {
+  last_name: {
     type: String,
   },
 }, { timestamps: true });
