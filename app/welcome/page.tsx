@@ -1,8 +1,10 @@
-import React from 'react'
+import { UserButton } from "@clerk/nextjs";
 
 const WelcomePage = () => {
   return (
-    <div>WelcomePage</div>
+    <div>
+      <UserButton />
+    </div>
   )
 }
 
