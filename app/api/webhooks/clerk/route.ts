@@ -74,6 +74,7 @@ export async function POST(req: Request) {
     };
 
     const newUser = await createUser(user);
+    console.log(newUser);
 
     if (newUser) {
       const client = await clerkClient();
