@@ -39,8 +39,12 @@ export const getSalesPerMonth = async () => {
   return graphData
 }
 
-export const getAllCollections = async () => {
+export const getAllCollections = async (title: string | undefined) => {
   await connectToDB();
+  if (title) {
+    const collections = await Collection.find({ title: new RegExp('\\b' + title + '\\b', 'i') });
+    return collections
+  }
   const collections = await Collection.find()
   return collections
 }
