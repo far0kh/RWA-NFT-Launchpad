@@ -1,4 +1,3 @@
-import User from "@/lib/models/user.model";
 import Customer from "@/lib/models/customer.model";
 import Order from "@/lib/models/order.model";
 import Collection from "@/lib/models/collection.model";
@@ -48,14 +47,4 @@ export const getAllCollections = async (title: string | undefined) => {
   }
   const collections = await Collection.find()
   return collections
-}
-
-export const createUser = async (user: UserType) => {
-  try {
-    await connectToDB();
-    const newUser = await User.create(user);
-    return JSON.parse(JSON.stringify(newUser));
-  } catch (error) {
-    console.log(error);
-  }
 }

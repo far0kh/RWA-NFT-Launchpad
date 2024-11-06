@@ -1,7 +1,7 @@
 import { Webhook } from "svix";
 import { headers } from "next/headers";
 import { clerkClient, WebhookEvent } from "@clerk/nextjs/server";
-import { createUser } from "@/lib/actions/actions";
+import { createUser } from "@/lib/actions/user.action";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
