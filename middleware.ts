@@ -1,4 +1,4 @@
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
+import { clerkClient, clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 
 const isPublicRoute = createRouteMatcher(['/log-in(.*)', '/sign-up(.*)', '/test(.*)', '/(api|trpc)(.*)'])
@@ -10,25 +10,29 @@ const isPublicRoute = createRouteMatcher(['/log-in(.*)', '/sign-up(.*)', '/test(
 // })
 
 export default clerkMiddleware(async (auth, req) => {
-  const { userId, redirectToSignIn, sessionClaims } = await auth();
+  const { userId, redirectToSignIn } = await auth();
 
   if (!userId && !isPublicRoute(req)) {
     // Add custom logic to run before redirecting
     return redirectToSignIn()
   }
 
-  // ToDo is_verified_artist: true > false
-  // let { is_verified_artist } = sessionClaims?.metadata || { is_verified_artist: undefined };
-  let { is_verified_artist } = (sessionClaims?.metadata || {}) as ClerkMetadata;
-  console.log('sessionClaims', sessionClaims);
-  console.log('is_verified_artist', is_verified_artist);
+  if (userId) {
+    const client = await clerkClient();
+    const user = await client.users.getUser(userId);
+    let { is_verified_artist } = user.publicMetadata as ClerkMetadata;
+    console.log('is_verified_artist', is_verified_artist);
 
-  // if (typeof is_verified_artist === 'undefined') {
-  //   is_verified_artist = true;
-  // }
-  if (userId && !isPublicRoute(req) && !is_verified_artist) {
-    return NextResponse.redirect(new URL("/test", req.url))
+    // development environment
+    if (typeof is_verified_artist === 'undefined') {
+      is_verified_artist = true;
+    }
+
+    if (userId && !isPublicRoute(req) && !is_verified_artist) {
+      return NextResponse.redirect(new URL("/test", req.url))
+    }
   }
+
 
 })
 
