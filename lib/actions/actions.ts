@@ -1,3 +1,4 @@
+import User from "../models/User";
 import Customer from "../models/Customer";
 import Order from "../models/Order";
 import Collection from "../models/Collection";
@@ -47,4 +48,14 @@ export const getAllCollections = async (title: string | undefined) => {
   }
   const collections = await Collection.find()
   return collections
+}
+
+export const createUser = async (user: UserType) => {
+  try {
+    await connectToDB();
+    const newUser = await User.create(user);
+    return JSON.parse(JSON.stringify(newUser));
+  } catch (error) {
+    console.log(error);
+  }
 }

@@ -1,10 +1,12 @@
 import { Webhook } from "svix";
 import { headers } from "next/headers";
 import { clerkClient, WebhookEvent } from "@clerk/nextjs/server";
-import { createUser } from "@/actions/user.action";
+import { createUser } from "@/lib/actions/actions";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
+  console.log("clerk webhook called");
+
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the endpoint
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
 
@@ -15,7 +17,7 @@ export async function POST(req: Request) {
   }
 
   // Get the headers
-  const headerPayload = headers();
+  const headerPayload = await headers();
   const svix_id = headerPayload.get("svix-id");
   const svix_timestamp = headerPayload.get("svix-timestamp");
   const svix_signature = headerPayload.get("svix-signature");
@@ -61,11 +63,11 @@ export async function POST(req: Request) {
 
     const user = {
       clerkId: id,
-      email: email_addresses[0].email_address,
+      email_address: email_addresses[0].email_address,
       username: username!,
-      photo: image_url!,
-      firstName: first_name,
-      lastName: last_name,
+      image_url: image_url!,
+      first_name: first_name!,
+      last_name: last_name!,
     };
 
     console.log(user);
@@ -73,7 +75,8 @@ export async function POST(req: Request) {
     const newUser = await createUser(user);
 
     if (newUser) {
-      await clerkClient.users.updateUserMetadata(id, {
+      const client = await clerkClient();
+      await client.users.updateUserMetadata(id, {
         publicMetadata: {
           userId: newUser._id,
         },

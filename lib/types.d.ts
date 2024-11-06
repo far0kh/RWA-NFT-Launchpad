@@ -1,3 +1,12 @@
+type UserType = {
+  clerkId: string;
+  email_address: string;
+  username: string;
+  image_url: string;
+  first_name: string;
+  last_name: string;
+}
+
 type CollectionType = {
   _id: string;
   title: string;
