@@ -9,7 +9,7 @@ type UserType = {
 
 type ClerkMetadata = {
   db_user_id?: string,
-  is_verified_artist?: string,
+  is_verified_artist?: boolean,
 }
 
 type CollectionType = {
