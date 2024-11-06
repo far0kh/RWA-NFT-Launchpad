@@ -4,6 +4,10 @@ import { clerkClient, WebhookEvent } from "@clerk/nextjs/server";
 import { createUser } from "@/lib/actions/actions";
 import { NextResponse } from "next/server";
 
+export async function GET(req: Request) {
+  return new Response("Hello from Clerk webhook");
+}
+
 export async function POST(req: Request) {
   console.log("clerk webhook called");
 
