@@ -2,6 +2,7 @@ import { clerkClient, clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/
 import { NextResponse } from 'next/server'
 
 const isPublicRoute = createRouteMatcher(['/log-in(.*)', '/sign-up(.*)', '/test(.*)', '/(api|trpc)(.*)'])
+const isWelcomeRoute = createRouteMatcher(['/welcome(.*)'])
 
 // export default clerkMiddleware(async (auth, request) => {
 //   if (!isPublicRoute(request)) {
@@ -27,7 +28,7 @@ export default clerkMiddleware(async (auth, req) => {
       is_verified_artist = true;
     }
 
-    if (userId && !isPublicRoute(req) && !is_verified_artist) {
+    if (userId && !is_verified_artist && !isWelcomeRoute(req)) {
       return NextResponse.redirect(new URL("/welcome", req.url))
     }
   }
