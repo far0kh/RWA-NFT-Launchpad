@@ -21,7 +21,7 @@ export default clerkMiddleware(async (auth, req) => {
   if (userId) {
     const client = await clerkClient();
     const user = await client.users.getUser(userId);
-    let { is_verified_artist } = user.publicMetadata as ClerkMetadata;
+    const { is_verified_artist } = user.publicMetadata as ClerkMetadata;
 
     // development environment
     // if (process.env.NODE_ENV === "development") {
