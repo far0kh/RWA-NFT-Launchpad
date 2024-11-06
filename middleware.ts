@@ -21,7 +21,6 @@ export default clerkMiddleware(async (auth, req) => {
     const client = await clerkClient();
     const user = await client.users.getUser(userId);
     let { is_verified_artist } = user.publicMetadata as ClerkMetadata;
-    console.log('is_verified_artist', is_verified_artist);
 
     // development environment
     if (typeof is_verified_artist === 'undefined') {
@@ -29,7 +28,7 @@ export default clerkMiddleware(async (auth, req) => {
     }
 
     if (userId && !isPublicRoute(req) && !is_verified_artist) {
-      return NextResponse.redirect(new URL("/test", req.url))
+      return NextResponse.redirect(new URL("/welcome", req.url))
     }
   }
 
