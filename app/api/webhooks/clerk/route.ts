@@ -4,10 +4,6 @@ import { clerkClient, WebhookEvent } from "@clerk/nextjs/server";
 import { createUser } from "@/lib/actions/user.action";
 import { NextResponse } from "next/server";
 
-export async function GET(req: Request) {
-  return new Response("Hello from Clerk webhook");
-}
-
 export async function POST(req: Request) {
   console.log("clerk webhook called");
 
@@ -61,8 +57,8 @@ export async function POST(req: Request) {
   const { id } = evt.data;
   const eventType = evt.type;
 
-  console.log(`Webhook with and ID of ${id} and type of ${eventType}`);
-  console.log("Webhook body:", body);
+  // console.log(`Webhook with and ID of ${id} and type of ${eventType}`);
+  // console.log("Webhook body:", body);
 
   if (eventType === "user.created") {
     const { id, email_addresses, image_url, first_name, last_name, username } =
@@ -76,8 +72,6 @@ export async function POST(req: Request) {
       first_name: first_name!,
       last_name: last_name!,
     };
-
-    console.log(user);
 
     const newUser = await createUser(user);
 
