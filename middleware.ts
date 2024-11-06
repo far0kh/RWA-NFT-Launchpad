@@ -19,7 +19,7 @@ export default clerkMiddleware(async (auth, req) => {
   }
 
   // ToDo is_verified_artist: true > false
-  let { is_verified_artist } = sessionClaims?.metadata || {};
+  let { is_verified_artist } = sessionClaims?.metadata || { is_verified_artist: undefined };
   if (typeof is_verified_artist === 'undefined') {
     is_verified_artist = true;
   }
