@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
 
-import { Separator } from "../ui/separator";
+import { Separator } from "../../ui/separator";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -16,15 +16,15 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "../ui/textarea";
-import ImageUpload from "../custom_ui/ImageUpload";
+import { Textarea } from "../../ui/textarea";
+import ImageUpload from "../../custom_ui/ImageUpload";
 import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 // import toast from "react-hot-toast";
-import Delete from "../custom_ui/Delete";
-import MultiText from "../custom_ui/MultiText";
-import MultiSelect from "../custom_ui/MultiSelect";
-import Loader from "../custom_ui/Loader";
+import Delete from "../../custom_ui/Delete";
+import MultiText from "../../custom_ui/MultiText";
+import MultiSelect from "../../custom_ui/MultiSelect";
+import Loader from "../../custom_ui/Loader";
 
 const formSchema = z.object({
   title: z.string().min(2).max(20),

@@ -8,7 +8,7 @@ import Loader from "@/components/custom_ui/Loader";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { DataTable } from "@/components/custom_ui/DataTable";
-import { columns } from "@/components/gifts/GiftColumns";
+import { columns } from "@/components/dashboard/gifts/GiftColumns";
 
 const Gifts = () => {
   const router = useRouter();

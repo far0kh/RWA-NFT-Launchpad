@@ -1,7 +1,7 @@
 "use client"
 
 import Loader from '@/components/custom_ui/Loader'
-import GiftForm from '@/components/gifts/GiftForm'
+import GiftForm from '@/components/dashboard/gifts/GiftForm'
 import React, { useEffect, useState } from 'react'
 
 const GiftDetails = ({ params }: { params: Promise<{ giftId: string }> }) => {

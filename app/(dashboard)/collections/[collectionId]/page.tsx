@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 
 import Loader from "@/components/custom_ui/Loader"
-import CollectionForm from "@/components/collections/CollectionForm"
+import CollectionForm from "@/components/dashboard/collections/CollectionForm"
 
 const CollectionDetails = ({ params }: { params: Promise<{ collectionId: string }> }) => {
   const [loading, setLoading] = useState(true)
