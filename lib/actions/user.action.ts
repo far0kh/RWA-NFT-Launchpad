@@ -1,5 +1,6 @@
 import User from "@/lib/models/user.model";
-import { connectToDB } from "../mongoDB"
+import { connectToDB } from "../mongoDB";
+import { auth } from '@clerk/nextjs/server';
 
 export const createUser = async (user: UserType) => {
   try {
@@ -14,6 +15,18 @@ export const createUser = async (user: UserType) => {
     }
     const newUser = await User.create(user);
     return JSON.parse(JSON.stringify(newUser));
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
+export const getAciveUser = async () => {
+  try {
+    const { userId } = await auth();
+    await connectToDB();
+    const DbUser = await User.find({ ckerk_id: userId })
+    return DbUser
   } catch (error) {
     console.log(error);
     return null;

@@ -3,6 +3,7 @@ import { Plus, Trash } from "lucide-react";
 
 import { Button } from "../ui/button";
 import Image from "next/image";
+import { useState } from "react";
 
 interface ImageUploadProps {
   value: string[];
@@ -10,14 +11,20 @@ interface ImageUploadProps {
   onRemove: (value: string) => void;
 }
 
+const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET! || "";
+
 const ImageUpload: React.FC<ImageUploadProps> = ({
   onChange,
   onRemove,
   value,
 }) => {
   const onUpload = (result: any) => {
+    console.log(result);
+
     onChange(result.info.secure_url);
   };
+
+  // const [resource, setResource] = useState();
 
   return (
     <div>
@@ -39,7 +46,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
         ))}
       </div>
 
-      <CldUploadWidget uploadPreset="buoxbpju" onUpload={onUpload}>
+      {/* <CldUploadWidget cloudName="djbj6vwao" uploadPreset={uploadPreset} onUpload={onUpload}>
         {({ open }) => {
           return (
             <Button type="button" onClick={() => open()} className="bg-grey-1 text-white">
@@ -48,7 +55,31 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
             </Button>
           );
         }}
+      </CldUploadWidget> */}
+
+      <CldUploadWidget
+        uploadPreset={uploadPreset}
+        options={{ sources: ['local', 'camera'], multiple: false, maxFiles: 1 }}
+        onSuccess={onUpload}
+        onQueuesEnd={(result, { widget }) => {
+          widget.close();
+        }}
+      >
+        {({ open }) => {
+          function handleOnClick(e: React.MouseEvent<HTMLButtonElement>) {
+            e.preventDefault();
+            // setResource(undefined);
+            open();
+          }
+          return (
+            <button onClick={handleOnClick}>
+              Upload Image
+            </button>
+          );
+        }}
       </CldUploadWidget>
+
+
     </div>
   );
 };
