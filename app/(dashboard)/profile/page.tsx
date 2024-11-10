@@ -19,7 +19,7 @@ const ProfilePage = () => {
   const getUserData = async () => {
     try {
       // const ckerkId = user?.userId
-      const res = await fetch(`/api/profile`, {
+      const res = await fetch(`/api/user`, {
         method: "GET"
       })
       const data = await res.json()

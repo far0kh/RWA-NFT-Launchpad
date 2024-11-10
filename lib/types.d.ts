@@ -7,6 +7,23 @@ type UserType = {
   last_name: string;
 }
 
+interface INewcomer {
+  artistName: string;
+  primaryGenre: string;
+  yearsPerforming: string;
+  musicalJourney: string;
+  preferredInstrument: string;
+}
+type NewcomerType = {
+  clerk_id: string;
+  db_id: string;
+  artistName: string;
+  primaryGenre: string;
+  yearsPerforming: string;
+  musicalJourney: string;
+  preferredInstrument: string;
+}
+
 type ClerkMetadata = {
   db_user_id?: string,
   is_verified_artist?: boolean,

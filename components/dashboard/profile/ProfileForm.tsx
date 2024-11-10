@@ -79,7 +79,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ initialData }) => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       setLoading(true);
-      const url = "/api/profile";
+      const url = "/api/user";
       const res = await fetch(url, {
         method: "POST",
         body: JSON.stringify(values),
