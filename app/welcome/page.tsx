@@ -57,7 +57,7 @@ export default function ArtistRegistration() {
     }
   }, [currentQuestion, answers])
 
-  const handleNext = (e: React.FormEvent) => {
+  const handleNext = () => {
     const currentQuestionData = questions[currentQuestion]
     if (currentQuestionData.required && !answers[currentQuestionData.field]) {
       setError('This question is required. Please provide an answer.')
@@ -67,7 +67,7 @@ export default function ArtistRegistration() {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1)
     } else {
-      handleSubmit(e)
+      handleSubmit()
     }
   }
 
@@ -84,8 +84,7 @@ export default function ArtistRegistration() {
     setError(null)
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+  const handleSubmit = async () => {
     const currentQuestionData = questions[currentQuestion]
     if (currentQuestionData.required && !answers[currentQuestionData.field]) {
       setError('This question is required. Please provide an answer.')
@@ -94,14 +93,13 @@ export default function ArtistRegistration() {
 
     setIsSubmitting(true)
     try {
-      const response = await fetch('/api/user', {
+      const response = await fetch('/api/user/newcomer', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(answers),
       })
-      console.log("RESPONSE", response);
 
       if (!response.ok) {
         throw new Error('Failed to submit')
@@ -109,6 +107,8 @@ export default function ArtistRegistration() {
 
       setIsSubmitted(true)
     } catch (error) {
+      console.log("[newcomer_GET]", error);
+
       setError('Failed to submit. Please try again.')
     } finally {
       setIsSubmitting(false)
@@ -140,7 +140,7 @@ export default function ArtistRegistration() {
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   e.preventDefault()
-                  handleNext(e)
+                  handleNext()
                 }
               }}
             />
@@ -175,7 +175,7 @@ export default function ArtistRegistration() {
               onKeyDown={(e) => {
                 if (e.key === 'Enter' && !e.shiftKey) {
                   e.preventDefault()
-                  handleNext(e)
+                  handleNext()
                 }
               }}
             />
@@ -222,7 +222,7 @@ export default function ArtistRegistration() {
             Back
           </Button>
           {currentQuestion === questions.length - 1 ? (
-            <Button type="submit" onClick={handleSubmit} disabled={isSubmitting}>
+            <Button onClick={handleSubmit} disabled={isSubmitting}>
               {isSubmitting ? 'Submitting...' : 'Submit'}
             </Button>
           ) : (

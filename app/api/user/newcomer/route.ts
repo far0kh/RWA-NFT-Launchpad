@@ -14,13 +14,12 @@ export const POST = async (req: NextRequest) => {
     }
     const client = await clerkClient();
     const clerkUser = await client.users.getUser(userId!);
-    const { db_user_id } = clerkUser.publicMetadata as ClerkMetadata;
+    console.log('clerkUser', clerkUser.emailAddresses[0].emailAddress);
 
     const body = await req.json() as INewcomer
-    console.log('body', body);
 
     await connectToDB()
-    const user = await User.find({ _id: db_user_id })
+    const user = await User.find({ email_address: clerkUser.emailAddresses[0].emailAddress })
     const newcomer = await Newcomer.create({
       clerk_id: userId,
       db_id: user[0]._id,

@@ -28,7 +28,7 @@ export default clerkMiddleware(async (auth, req) => {
     //   is_verified_artist = true;
     // }
 
-    if (userId && !is_verified_artist && !isWelcomeRoute(req)) {
+    if (userId && !is_verified_artist && !isWelcomeRoute(req) && !isPublicRoute(req)) {
       return NextResponse.redirect(new URL("/welcome", req.url))
     }
     if (userId && is_verified_artist && isWelcomeRoute(req)) {
